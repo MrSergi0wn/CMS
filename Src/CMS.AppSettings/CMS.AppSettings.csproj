@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Src\CMS.Models\CMS.Models.csproj" />
+    <ProjectReference Include="..\CMS.Models\CMS.Models.csproj" />
   </ItemGroup>
 
 </Project>

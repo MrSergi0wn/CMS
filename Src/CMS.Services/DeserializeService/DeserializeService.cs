@@ -8,7 +8,7 @@ namespace CMS.Services.DeserializeService
         public TemplateViewModel DeserializeJsonFile(string jsonFilePath)
         {
             return (!string.IsNullOrEmpty(jsonFilePath) ? JsonConvert.DeserializeObject<TemplateViewModel>(File.ReadAllText(jsonFilePath))! : null)!; 
-            //todo Присрать суда FileManager и через BaseDirectory через относительный путь искать путь к файлу
+            //todo Присрать сюда FileManager и через BaseDirectory через относительный путь искать путь к файлу
         }
     }
 }
