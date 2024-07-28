@@ -1,9 +1,11 @@
 
 
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using CMS.AppSettings;
 using CMS.Models;
 using CMS.Services.DeserializeService;
+using CMS.Services.FileSystemService;
 using CMS.ServicesManager;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,20 +17,24 @@ namespace CMS.Controllers
 
         private readonly IDeserializeService deserializeService;
 
+        private readonly IFileSystemService fileSystemService;
+
         private readonly IAppSettingsConfig appSettingsConfig;
 
         public HomeController(IServicesManager servicesManager, IAppSettingsConfig appSettingsConfig)
         {
             this.servicesManager = servicesManager;
             this.deserializeService = this.servicesManager!.DeserializeService;
+            this.fileSystemService = this.servicesManager.FileSystemService;
             this.appSettingsConfig = appSettingsConfig;
+            
         }
 
         public IActionResult Index()
         {
             var templateViewModel =
-                this.deserializeService.DeserializeJsonFile(this.appSettingsConfig.GetAppSettings()
-                    .JsonFilePath!);
+                this.deserializeService.DeserializeJsonFile(this.fileSystemService.GetPathToCmsComponents(this.appSettingsConfig.GetAppSettings()
+                    .JsonFilePath!) );
 
             return View(templateViewModel);
         }

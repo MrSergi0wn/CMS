@@ -1,6 +1,6 @@
-﻿namespace CMS.Models.ViewModels
+﻿namespace CMS.Models.Models.CMSComponents
 {
-    public class BodyViewModel : IViewComponent
+    public class Body : IViewComponent
     {
         public int Id { get; set; }
 

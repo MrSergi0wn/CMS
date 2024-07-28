@@ -1,8 +1,8 @@
-﻿using CMS.Models.ViewModels;
+﻿using CMS.Models.Models.CMSComponents;
 
 namespace CMS.Services.DeserializeService;
 
 public interface IDeserializeService
 {
-    TemplateViewModel DeserializeJsonFile(string jsonFilePath);
+    IEnumerable<Template> DeserializeJsonFile(string jsonFilePath);
 }

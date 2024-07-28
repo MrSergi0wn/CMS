@@ -1,14 +1,18 @@
-﻿using CMS.Models.ViewModels;
+﻿using CMS.Models.Models.CMSComponents;
 using Newtonsoft.Json;
 
 namespace CMS.Services.DeserializeService
 {
     public class DeserializeService : IDeserializeService
     {
-        public TemplateViewModel DeserializeJsonFile(string jsonFilePath)
+        public IEnumerable<Template> DeserializeJsonFile(string jsonFilePath)
         {
-            return (!string.IsNullOrEmpty(jsonFilePath) ? JsonConvert.DeserializeObject<TemplateViewModel>(File.ReadAllText(jsonFilePath))! : null)!; 
-            //todo Присрать сюда FileManager и через BaseDirectory через относительный путь искать путь к файлу
+            var qwe = JsonConvert.DeserializeObject<List<Template>>(File.ReadAllText(jsonFilePath))!;
+
+
+            return qwe;
+
+            //return (!string.IsNullOrEmpty(jsonFilePath) ? JsonConvert.DeserializeObject<Template>(File.ReadAllText(jsonFilePath))! : null)!; 
         }
     }
 }
