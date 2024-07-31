@@ -1,59 +1,76 @@
 {
-  "Headers": [
+  "Components": [
     {
-      "Id": 1,
-      "Name": "FirstHeader",
-      "Class": "h1"
+      "ComponentId": "label_1",
+      "Type": "forHeader",
+      "Propertis": {
+        "rep_color": "green"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 2,
-      "Name": "SecondHeader",
-      "Class": "h2"
+      "ComponentId": "label_2",
+      "Type": "forHeader",
+      "Propertis": {
+        "rep_color": "red"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 3,
-      "Name": "ThirdHeader",
-      "Class": "h3"
-    }
-  ],
-  "Bodies": [
-    {
-      "Id": 1,
-      "Name": "FirstBody",
-      "Class": "body-style",
-      "ContentColor": "white"
+      "ComponentId": "label_3",
+      "Type": "forHeader",
+      "Propertis": {
+        "rep_color": "white"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 2,
-      "Name": "SecondBody",
-      "Class": "body-style",
-      "ContentColor": "green"
+      "ComponentId": "label_1",
+      "Type": "forBody",
+      "Propertis": {
+        "rep_color": "green"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 3,
-      "Name": "ThirdBody",
-      "Class": "body-style",
-      "ContentColor": "red"
-    }
-  ],
-  "Footers": [
-    {
-      "Id": 1,
-      "Name": "FirstFooter",
-      "Class": "footer-style",
-      "Height": 50
+      "ComponentId": "label_2",
+      "Type": "forBody",
+      "Propertis": {
+        "rep_color": "red"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 2,
-      "Name": "SecondFooter",
-      "Class": "footer-style",
-      "Height": 80
+      "ComponentId": "label_3",
+      "Type": "forBody",
+      "Propertis": {
+        "rep_color": "white"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     },
     {
-      "Id": 3,
-      "Name": "ThirdFooter",
-      "Class": "footer-style",
-      "Height": 100
+      "ComponentId": "label_1",
+      "Type": "forFooter",
+      "Propertis": {
+        "rep_color": "green"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
+    },
+    {
+      "ComponentId": "label_2",
+      "Type": "forFooter",
+      "Propertis": {
+        "rep_color": "red"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
+    },
+    {
+      "ComponentId": "label_3",
+      "Type": "forFooter",
+      "Propertis": {
+        "rep_color": "white"
+      },
+      "HtmlTemplate": "PGxhYmVsIHN0eWxlPSJ7Y29sb3I6PCFyZXBsX2NvbG9yIT59Ii8+"
     }
   ]
 }

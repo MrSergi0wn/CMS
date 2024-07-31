@@ -1,9 +1,11 @@
-﻿@model CMS.Models.Models.CMSComponents.SelectedCmsComponent
+﻿@model CMS.Models.Models.CMSComponents.Root
 
 @{
     ViewData["Title"] = "New View";
 }
 
 <div class="text-center">
-    <h1>@Model.SelectedBody!.Name</h1>
+    <h1>@Model.SelectedHeaderID!</h1>
+    <h1>@Model.SelectedBodyID!</h1>
+    <h1>@Model.SelectedFooterID!</h1>
 </div>

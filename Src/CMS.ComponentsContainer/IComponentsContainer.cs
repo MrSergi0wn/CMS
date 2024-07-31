@@ -4,7 +4,6 @@ namespace CMS.ItemsContainer;
 
 public interface IComponentsContainer
 {
-    CmsComponents GetComponents();
+    Root GetComponents();
 
-    IEnumerable<T>? GetComponentsCollection<T>() where T : IViewComponent;
 }

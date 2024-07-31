@@ -5,9 +5,9 @@ namespace CMS.Services.DeserializeService
 {
     public class DeserializeService : IDeserializeService
     {
-        public CmsComponents DeserializeJsonFile(string jsonFilePath)
+        public Root DeserializeJsonFile(string jsonFilePath)
         {
-            return JsonSerializer.Deserialize<CmsComponents>(File.ReadAllText(jsonFilePath), new JsonSerializerOptions{AllowTrailingCommas = true})!;
+            return JsonSerializer.Deserialize<Root>(File.ReadAllText(jsonFilePath), new JsonSerializerOptions{AllowTrailingCommas = true})!;
         }
     }
 }

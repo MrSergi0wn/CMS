@@ -1,5 +1,5 @@
 ﻿@using Kendo.Mvc.UI
-@model CMS.Models.Models.CMSComponents.CmsComponents
+@model CMS.Models.Models.CMSComponents.Root
 
 @{
     ViewData["Title"] = "Home Page";
@@ -13,15 +13,15 @@
         
         <div class="row d-flex justify-content-center" style="margin-bottom:150px;">
             <div class="col-md-5">
-                @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeaderId)
+                @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeaderID)
                     .Label(label => label.Content("Headers"))
-                    .DataTextField("Name")
-                    .DataValueField("Id")
+                    .DataTextField("ComponentId")
+                    .DataValueField("ComponentId")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("Id").Title("Id");
-                        columns.Add().Field("Name").Title("Имя");
-                        columns.Add().Field("Class").Title("Класс");
+                        columns.Add().Field("ComponentId").Title("Название");
+                        @* columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("Class").Title("Класс"); *@
                     })
                     .Placeholder("Выберите \"Header\"")
                     .DataSource(source =>
@@ -36,16 +36,16 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-5" style="margin-bottom: 150px;">
-                @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBodyId)
+                @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBodyID)
                     .Label(label => label.Content("Bodies"))
-                    .DataTextField("Name")
-                    .DataValueField("Id")
+                    .DataTextField("ComponentId")
+                    .DataValueField("ComponentId")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("Id").Title("Id");
-                        columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("ComponentId").Title("Название");
+                        @* columns.Add().Field("Name").Title("Имя");
                         columns.Add().Field("Class").Title("Класс");
-                        columns.Add().Field("ContentColor").Title("Цвет");
+                        columns.Add().Field("ContentColor").Title("Цвет") *@;
                     })
                     .Placeholder("Выберите \"Body\"")
                     .DataSource(source =>
@@ -62,16 +62,16 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-md-5" style="margin-bottom: 150px;">
-                @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooterId)
+                @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooterID)
                     .Label(label => label.Content("Footers"))
-                    .DataTextField("Name")
-                    .DataValueField("Id")
+                    .DataTextField("ComponentId")
+                    .DataValueField("ComponentId")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("Id").Title("Id");
-                        columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("ComponentId").Title("Название");
+                        @* columns.Add().Field("Name").Title("Имя");
                         columns.Add().Field("Class").Title("Класс");
-                        columns.Add().Field("Height").Title("Высота");
+                        columns.Add().Field("Height").Title("Высота"); *@
                     })
                     .Placeholder("Выберите \"Footer\"")
                     .DataSource(source =>
@@ -86,6 +86,6 @@
             </div>
         </div>
         
-        <button type="submit"  class="btn btn-outline-success">Создать</button>
+        <button type="submit" class="btn btn-outline-success">Создать</button>
     </div>
 </form>
