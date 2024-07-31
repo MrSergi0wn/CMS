@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CMS.AppSettings;
-using CMS.Mapper;
+using CMS.ItemsContainer;
 using CMS.ServicesManager;
 
 namespace CMS
@@ -11,11 +11,19 @@ namespace CMS
         {
             services.AddMvc();
 
+            services.AddKendo();
+
+            services.AddControllersWithViews()
+                .AddJsonOptions(options =>
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             CreateAppSettingsConfig(services);
 
-            CreateMapper(services);
+            //CreateMapper(services);
 
             services.AddScoped<IServicesManager, ServicesManager.ServicesManager>();
+
+            services.AddScoped<IComponentsContainer, ComponentsContainer>();
 
             return services;
         }
@@ -29,18 +37,18 @@ namespace CMS
             services.AddSingleton<IAppSettingsConfig>(appSettingsService);
         }
 
-        private static void CreateMapper(this IServiceCollection services)
-        {
-            var mapperConfiguration = new MapperConfiguration(mapperConfigurationExpression =>
-            {
-                mapperConfigurationExpression.AddProfile(new MapperProfile());
-            });
+        //private static void CreateMapper(this IServiceCollection services)
+        //{
+        //    var mapperConfiguration = new MapperConfiguration(mapperConfigurationExpression =>
+        //    {
+        //        mapperConfigurationExpression.AddProfile(new MapperProfile());
+        //    });
 
-            services.AddScoped(provider => provider.GetService<MapperConfiguration>()!.CreateMapper());
+        //    services.AddScoped(provider => provider.GetService<MapperConfiguration>()!.CreateMapper());
 
-            services.AddSingleton<IMapper>(new AutoMapper.Mapper(mapperConfiguration));
+        //    services.AddSingleton<IMapper>(new AutoMapper.Mapper(mapperConfiguration));
 
-            mapperConfiguration.CreateMapper();
-        }
+        //    mapperConfiguration.CreateMapper();
+        //}
     }
 }

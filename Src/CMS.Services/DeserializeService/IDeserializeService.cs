@@ -4,5 +4,5 @@ namespace CMS.Services.DeserializeService;
 
 public interface IDeserializeService
 {
-    IEnumerable<Template> DeserializeJsonFile(string jsonFilePath);
+    CmsComponents DeserializeJsonFile(string jsonFilePath);
 }

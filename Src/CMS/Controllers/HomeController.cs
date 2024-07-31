@@ -1,42 +1,64 @@
-
-
+using System.Collections;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using CMS.AppSettings;
+using CMS.ItemsContainer;
 using CMS.Models;
-using CMS.Services.DeserializeService;
-using CMS.Services.FileSystemService;
-using CMS.ServicesManager;
+using CMS.Models.Models.CMSComponents;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IServicesManager servicesManager;
+        private readonly IComponentsContainer componentsContainer;
 
-        private readonly IDeserializeService deserializeService;
 
-        private readonly IFileSystemService fileSystemService;
-
-        private readonly IAppSettingsConfig appSettingsConfig;
-
-        public HomeController(IServicesManager servicesManager, IAppSettingsConfig appSettingsConfig)
+        public HomeController(IComponentsContainer componentsContainer)
         {
-            this.servicesManager = servicesManager;
-            this.deserializeService = this.servicesManager!.DeserializeService;
-            this.fileSystemService = this.servicesManager.FileSystemService;
-            this.appSettingsConfig = appSettingsConfig;
-            
+            this.componentsContainer = componentsContainer;
         }
 
         public IActionResult Index()
         {
-            var templateViewModel =
-                this.deserializeService.DeserializeJsonFile(this.fileSystemService.GetPathToCmsComponents(this.appSettingsConfig.GetAppSettings()
-                    .JsonFilePath!) );
+            return View();
+        }
 
-            return View(templateViewModel);
+        //public IActionResult Create(IEnumerable<Template> templates)
+        //{
+
+        //}
+
+        public JsonResult GetHeaders()
+        {
+            return Json(this.componentsContainer.GetComponentsCollection<Header>()!);
+        }
+
+        public JsonResult GetBodies()
+        {
+            return Json(this.componentsContainer.GetComponentsCollection<Body>()!);
+        }
+
+        public JsonResult GetFooters()
+        {
+            return Json(this.componentsContainer.GetComponentsCollection<Footer>()!);
+        }
+
+        [HttpPost]
+        public IActionResult CreateView(CmsComponents cmsComponents)
+        {
+            var qwe = new SelectedCmsComponent()
+            {
+                SelectedHeader =
+                    this.componentsContainer.GetComponentsCollection<Header>()!.FirstOrDefault(header =>
+                        header.Id.Equals(cmsComponents.SelectedHeaderId)),
+                SelectedBody =
+                    this.componentsContainer.GetComponentsCollection<Body>()!.FirstOrDefault(body =>
+                        body.Id.Equals(cmsComponents.SelectedBodyId)),
+                SelectedFooter =
+                    this.componentsContainer.GetComponentsCollection<Footer>()!.FirstOrDefault(footer =>
+                        footer.Id.Equals(cmsComponents.SelectedFooterId))
+            };
+
+            return this.View("NewView",qwe);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

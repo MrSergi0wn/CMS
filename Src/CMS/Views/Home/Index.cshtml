@@ -1,8 +1,91 @@
-﻿@{
+﻿@using Kendo.Mvc.UI
+@model CMS.Models.Models.CMSComponents.CmsComponents
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<form asp-controller="Home" asp-action="CreateView">
+    <div class="text-center">
+
+        <h1 style="margin-bottom:50px">Конструктор</h1>
+        
+        <div class="row d-flex justify-content-center" style="margin-bottom:150px;">
+            <div class="col-md-5">
+                @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeaderId)
+                    .Label(label => label.Content("Headers"))
+                    .DataTextField("Name")
+                    .DataValueField("Id")
+                    .Columns(columns =>
+                    {
+                        columns.Add().Field("Id").Title("Id");
+                        columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("Class").Title("Класс");
+                    })
+                    .Placeholder("Выберите \"Header\"")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetHeaders", "Home");
+                        })
+                        .ServerFiltering(false);
+                    }))
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5" style="margin-bottom: 150px;">
+                @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBodyId)
+                    .Label(label => label.Content("Bodies"))
+                    .DataTextField("Name")
+                    .DataValueField("Id")
+                    .Columns(columns =>
+                    {
+                        columns.Add().Field("Id").Title("Id");
+                        columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("Class").Title("Класс");
+                        columns.Add().Field("ContentColor").Title("Цвет");
+                    })
+                    .Placeholder("Выберите \"Body\"")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetBodies", "Home");
+                        })
+                        .ServerFiltering(false);
+                    })
+                    )
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5" style="margin-bottom: 150px;">
+                @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooterId)
+                    .Label(label => label.Content("Footers"))
+                    .DataTextField("Name")
+                    .DataValueField("Id")
+                    .Columns(columns =>
+                    {
+                        columns.Add().Field("Id").Title("Id");
+                        columns.Add().Field("Name").Title("Имя");
+                        columns.Add().Field("Class").Title("Класс");
+                        columns.Add().Field("Height").Title("Высота");
+                    })
+                    .Placeholder("Выберите \"Footer\"")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetFooters", "Home");
+                        })
+                        .ServerFiltering(false);
+                    })
+                    )
+            </div>
+        </div>
+        
+        <button type="submit"  class="btn btn-outline-success">Создать</button>
+    </div>
+</form>

@@ -1,74 +1,59 @@
 {
-  "Templates": [
+  "Headers": [
     {
       "Id": 1,
-      "Name": "DefaultTemplate",
-      "Description": "Default template for demonstration CMS",
-      "Components": [
-        {
-          "Headers": [
-            {
-              "Id": 1,
-              "Name": "firstHeader",
-              "Class": "h1",
-            },
-            {
-              "Id": 2,
-              "Name": "secondHeader",
-              "Class": "h2"
-            },
-            {
-              "Id": 3,
-              "Name": "thirdHeader",
-              "Class": "h3"
-            }
-          ]
-        },
-        {
-          "Bodies": [
-            {
-              "Id": 1,
-              "Name": "firstBody",
-              "Class": "body-style",
-              "ContentColor": "white"
-            },
-            {
-              "Id": 2,
-              "Name": "secondBody",
-              "Class": "body-style",
-              "ContentColor": "green"
-            },
-            {
-              "Id": 3,
-              "Name": "thirdBody",
-              "Class": "body-style",
-              "ContentColor": "red"
-            }
-          ]
-        },
-        {
-          "Footers":[
-            {
-              "Id": 1,
-              "Name": "firstFooter",
-              "Class": "footer-style",
-              "Width": 50
-            },
-            {
-              "Id": 2,
-              "Name": "secondFooter",
-              "Class": "footer-style",
-              "Width": 80
-            },
-            {
-              "Id": 3,
-              "Name": "thirdFooter",
-              "Class": "footer-style",
-              "Width": 100
-            }
-          ]
-        }
-      ]
+      "Name": "FirstHeader",
+      "Class": "h1"
+    },
+    {
+      "Id": 2,
+      "Name": "SecondHeader",
+      "Class": "h2"
+    },
+    {
+      "Id": 3,
+      "Name": "ThirdHeader",
+      "Class": "h3"
+    }
+  ],
+  "Bodies": [
+    {
+      "Id": 1,
+      "Name": "FirstBody",
+      "Class": "body-style",
+      "ContentColor": "white"
+    },
+    {
+      "Id": 2,
+      "Name": "SecondBody",
+      "Class": "body-style",
+      "ContentColor": "green"
+    },
+    {
+      "Id": 3,
+      "Name": "ThirdBody",
+      "Class": "body-style",
+      "ContentColor": "red"
+    }
+  ],
+  "Footers": [
+    {
+      "Id": 1,
+      "Name": "FirstFooter",
+      "Class": "footer-style",
+      "Height": 50
+    },
+    {
+      "Id": 2,
+      "Name": "SecondFooter",
+      "Class": "footer-style",
+      "Height": 80
+    },
+    {
+      "Id": 3,
+      "Name": "ThirdFooter",
+      "Class": "footer-style",
+      "Height": 100
     }
   ]
 }
