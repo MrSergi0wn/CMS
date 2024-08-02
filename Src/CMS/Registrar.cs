@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using CMS.AppSettings;
+using CMS.Context;
 using CMS.ItemsContainer;
+using CMS.Repository;
 using CMS.ServicesManager;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CMS
 {
@@ -17,24 +20,28 @@ namespace CMS
                 .AddJsonOptions(options =>
                     options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
-            CreateAppSettingsConfig(services);
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
+
+            var appSettingsService = new AppSettingsConfig(configuration);
+
+            services.AddSingleton<IAppSettingsConfig>(appSettingsService);
 
             //CreateMapper(services);
 
-            services.AddScoped<IServicesManager, ServicesManager.ServicesManager>();
+            var serviceManager = new ServicesManager.ServicesManager();
 
-            services.AddScoped<IComponentsContainer, ComponentsContainer>();
+            services.AddScoped<IServicesManager>(service => serviceManager);
+
+            var domainContext = new DomainContext(serviceManager, appSettingsService);
+
+            services.AddScoped<IRepository>(service => new Repository.Repository(domainContext));
 
             return services;
         }
 
         private static void CreateAppSettingsConfig(this IServiceCollection services)
         {
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
-
-            var appSettingsService = new AppSettingsConfig(configuration);
-
-            services.AddSingleton<IAppSettingsConfig>(appSettingsService);
+            
         }
 
         //private static void CreateMapper(this IServiceCollection services)

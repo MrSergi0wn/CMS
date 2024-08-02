@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CMS.AppSettings\CMS.AppSettings.csproj" />
     <ProjectReference Include="..\CMS.ComponentsContainer\CMS.ItemsContainer.csproj" />
+    <ProjectReference Include="..\CMS.Repository\CMS.Repository.csproj" />
     <ProjectReference Include="..\CMS.ServicesManager\CMS.ServicesManager.csproj" />
     <ProjectReference Include="..\CMS.Services\CMS.Services.csproj" />
   </ItemGroup>

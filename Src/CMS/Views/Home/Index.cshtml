@@ -1,25 +1,27 @@
 ﻿@using Kendo.Mvc.UI
-@model CMS.Models.Models.CMSComponents.Root
+@model CMS.Models.Models.CMSComponents.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-
 <form asp-controller="Home" asp-action="CreateView">
     <div class="text-center">
+        
+        <label style="color:green">Тест</label>
 
         <h1 style="margin-bottom:50px">Конструктор</h1>
         
         <div class="row d-flex justify-content-center" style="margin-bottom:150px;">
             <div class="col-md-5">
-                @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeaderID)
+                @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeader)
                     .Label(label => label.Content("Headers"))
-                    .DataTextField("ComponentId")
-                    .DataValueField("ComponentId")
+                    .DataTextField("ComponentName")
+                    .DataValueField("OuterHtml")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("ComponentId").Title("Название");
+                        columns.Add().Field("ComponentName").Title("Название");
+                        columns.Add().Field("CurrentColor").Title("Цвет");
                         @* columns.Add().Field("Name").Title("Имя");
                         columns.Add().Field("Class").Title("Класс"); *@
                     })
@@ -36,13 +38,14 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-5" style="margin-bottom: 150px;">
-                @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBodyID)
+                @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBody)
                     .Label(label => label.Content("Bodies"))
-                    .DataTextField("ComponentId")
-                    .DataValueField("ComponentId")
+                    .DataTextField("ComponentName")
+                    .DataValueField("OuterHtml")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("ComponentId").Title("Название");
+                        columns.Add().Field("ComponentName").Title("Название");
+                        columns.Add().Field("CurrentColor").Title("Цвет");
                         @* columns.Add().Field("Name").Title("Имя");
                         columns.Add().Field("Class").Title("Класс");
                         columns.Add().Field("ContentColor").Title("Цвет") *@;
@@ -62,13 +65,14 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-md-5" style="margin-bottom: 150px;">
-                @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooterID)
+                @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooter)
                     .Label(label => label.Content("Footers"))
-                    .DataTextField("ComponentId")
-                    .DataValueField("ComponentId")
+                    .DataTextField("ComponentName")
+                    .DataValueField("OuterHtml")
                     .Columns(columns =>
                     {
-                        columns.Add().Field("ComponentId").Title("Название");
+                        columns.Add().Field("ComponentName").Title("Название");
+                        columns.Add().Field("CurrentColor").Title("Цвет");
                         @* columns.Add().Field("Name").Title("Имя");
                         columns.Add().Field("Class").Title("Класс");
                         columns.Add().Field("Height").Title("Высота"); *@

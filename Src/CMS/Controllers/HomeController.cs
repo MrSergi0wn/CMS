@@ -3,18 +3,18 @@ using System.Diagnostics;
 using CMS.ItemsContainer;
 using CMS.Models;
 using CMS.Models.Models.CMSComponents;
+using CMS.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IComponentsContainer componentsContainer;
+        private readonly IRepository repository;
 
-
-        public HomeController(IComponentsContainer componentsContainer)
+        public HomeController(IRepository repository)
         {
-            this.componentsContainer = componentsContainer;
+            this.repository = repository;
         }
 
         public IActionResult Index()
@@ -24,24 +24,36 @@ namespace CMS.Controllers
 
         public JsonResult GetHeaders()
         {
-            var qwe = this.componentsContainer.GetComponents().Components.Where(c => c.Type.Equals("forHeader"));
-            return Json(qwe);
+            var headersBuilder = this.repository.GetHeaders().Select(component => new BuilderViewModel(component)).ToList();
+
+            return Json(headersBuilder);
         }
 
         public JsonResult GetBodies()
         {
-            return Json(this.componentsContainer.GetComponents().Components.Where(c => c.Type.Equals("forBody")));
+            var bodiesBuilder = this.repository.GetBodies().Select(component => new BuilderViewModel(component)).ToList();
+
+            return Json(bodiesBuilder);
         }
 
         public JsonResult GetFooters()
         {
-            return Json(this.componentsContainer.GetComponents().Components.Where(c => c.Type.Equals("forFooter")));
+            var footersBuilder = this.repository.GetFooters().Select(component => new BuilderViewModel(component)).ToList();
+
+            return Json(footersBuilder);
         }
 
         [HttpPost]
-        public IActionResult CreateView(Root cmsComponents)
+        public IActionResult CreateView(HomeViewModel homeViewModel)
         {
-            return this.View("NewView", cmsComponents);
+            var qwe = new ResultViewModel()
+            {
+                HeaderOuterHtml = homeViewModel.SelectedHeader,
+                BodyOuterHtml = homeViewModel.SelectedBody,
+                FooterOuterHtml = homeViewModel.SelectedFooter
+            };
+
+            return this.View("ResultView", qwe);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

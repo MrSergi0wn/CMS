@@ -10,9 +10,6 @@
         public string GetPathToCmsComponents(string fileName)
         {
             return Path.Combine(this.GetBaseDirectory(), fileName);
-
-            //return Path.Combine(this.GetBaseDirectory(),
-            //    $"..\\..\\..\\..\\..\\Components\\{fileName}");
         }
     }
 }
