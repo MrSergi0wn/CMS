@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using CMS.AppSettings;
 using CMS.Context;
-using CMS.ItemsContainer;
 using CMS.Repository;
 using CMS.ServicesManager;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CMS
 {
@@ -26,22 +24,15 @@ namespace CMS
 
             services.AddSingleton<IAppSettingsConfig>(appSettingsService);
 
-            //CreateMapper(services);
-
             var serviceManager = new ServicesManager.ServicesManager();
 
-            services.AddScoped<IServicesManager>(service => serviceManager);
+            services.AddScoped<IServicesManager>(_ => serviceManager);
 
             var domainContext = new DomainContext(serviceManager, appSettingsService);
 
-            services.AddScoped<IRepository>(service => new Repository.Repository(domainContext));
+            services.AddScoped<IRepository>(_ => new Repository.Repository(domainContext));
 
             return services;
-        }
-
-        private static void CreateAppSettingsConfig(this IServiceCollection services)
-        {
-            
         }
 
         //private static void CreateMapper(this IServiceCollection services)

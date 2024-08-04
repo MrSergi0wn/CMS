@@ -1,4 +1,5 @@
 ﻿using CMS.AppSettings;
+using CMS.Domain;
 using CMS.Models.Models.CMSComponents;
 using CMS.ServicesManager;
 
@@ -17,11 +18,10 @@ namespace CMS.Context
             this.servicesManager = servicesManager;
             this.appSettingsConfig = appSettingsConfig;
 
-            var qwe = this.servicesManager.FileSystemService.GetPathToCmsComponents(this.appSettingsConfig!
-                .GetAppSettings()
-                .JsonFilePath!);
             this.Components = this.servicesManager!.DeserializeService.DeserializeJsonFile(
-                qwe).Components;
+                this.servicesManager.FileSystemService.GetPathToCmsComponents(this.appSettingsConfig!
+                    .GetAppSettings()
+                    .JsonFilePath!)).Components!;
         }
 
         public IEnumerable<ComponentModel> GetComponents()

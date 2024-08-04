@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Diagnostics;
-using CMS.ItemsContainer;
-using CMS.Models;
 using CMS.Models.Models.CMSComponents;
 using CMS.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -24,42 +20,30 @@ namespace CMS.Controllers
 
         public JsonResult GetHeaders()
         {
-            var headersBuilder = this.repository.GetHeaders().Select(component => new BuilderViewModel(component)).ToList();
-
-            return Json(headersBuilder);
+            return Json(this.repository.GetHeaders().Select(component => new BuilderViewModel(component)).ToList());
         }
 
         public JsonResult GetBodies()
         {
-            var bodiesBuilder = this.repository.GetBodies().Select(component => new BuilderViewModel(component)).ToList();
-
-            return Json(bodiesBuilder);
+            return Json(this.repository.GetBodies().Select(component => new BuilderViewModel(component)).ToList());
         }
 
         public JsonResult GetFooters()
         {
-            var footersBuilder = this.repository.GetFooters().Select(component => new BuilderViewModel(component)).ToList();
-
-            return Json(footersBuilder);
+            return Json(this.repository.GetFooters().Select(component => new BuilderViewModel(component)).ToList());
         }
 
         [HttpPost]
         public IActionResult CreateView(HomeViewModel homeViewModel)
         {
-            var qwe = new ResultViewModel()
+            var resultViewModel = new ResultViewModel()
             {
                 HeaderOuterHtml = homeViewModel.SelectedHeader,
                 BodyOuterHtml = homeViewModel.SelectedBody,
                 FooterOuterHtml = homeViewModel.SelectedFooter
             };
 
-            return this.View("ResultView", qwe);
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View("ResultView", resultViewModel);
         }
     }
 }

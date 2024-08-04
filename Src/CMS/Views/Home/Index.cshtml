@@ -8,8 +8,6 @@
 <form asp-controller="Home" asp-action="CreateView">
     <div class="text-center">
         
-        <label style="color:green">Тест</label>
-
         <h1 style="margin-bottom:50px">Конструктор</h1>
         
         <div class="row d-flex justify-content-center" style="margin-bottom:150px;">
@@ -21,9 +19,9 @@
                     .Columns(columns =>
                     {
                         columns.Add().Field("ComponentName").Title("Название");
-                        columns.Add().Field("CurrentColor").Title("Цвет");
-                        @* columns.Add().Field("Name").Title("Имя");
-                        columns.Add().Field("Class").Title("Класс"); *@
+                        columns.Add().Field("ComponentTag").Title("Тег");
+                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentClass").Title("Класс");
                     })
                     .Placeholder("Выберите \"Header\"")
                     .DataSource(source =>
@@ -45,10 +43,9 @@
                     .Columns(columns =>
                     {
                         columns.Add().Field("ComponentName").Title("Название");
-                        columns.Add().Field("CurrentColor").Title("Цвет");
-                        @* columns.Add().Field("Name").Title("Имя");
-                        columns.Add().Field("Class").Title("Класс");
-                        columns.Add().Field("ContentColor").Title("Цвет") *@;
+                        columns.Add().Field("ComponentTag").Title("Тег");
+                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentClass").Title("Класс");
                     })
                     .Placeholder("Выберите \"Body\"")
                     .DataSource(source =>
@@ -72,10 +69,9 @@
                     .Columns(columns =>
                     {
                         columns.Add().Field("ComponentName").Title("Название");
-                        columns.Add().Field("CurrentColor").Title("Цвет");
-                        @* columns.Add().Field("Name").Title("Имя");
-                        columns.Add().Field("Class").Title("Класс");
-                        columns.Add().Field("Height").Title("Высота"); *@
+                        columns.Add().Field("ComponentTag").Title("Тег");
+                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentClass").Title("Класс");
                     })
                     .Placeholder("Выберите \"Footer\"")
                     .DataSource(source =>

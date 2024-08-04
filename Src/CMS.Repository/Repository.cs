@@ -1,5 +1,5 @@
 ﻿using CMS.Context;
-using CMS.Models.Models.CMSComponents;
+using CMS.Domain;
 
 namespace CMS.Repository
 {

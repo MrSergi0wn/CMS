@@ -1,28 +1,28 @@
 ﻿using System.Text;
 
-namespace CMS.Models.Models.CMSComponents
+namespace CMS.Domain
 {
     public class ComponentModel
     {
         /// <summary>
         /// Название
         /// </summary>
-        public string ComponentName { get; set; }
+        public string? ComponentName { get; set; }
 
         /// <summary>
         /// Тип ("For Header", "For Body", "For Footer")
         /// </summary>
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         /// Параметры
         /// </summary>
-        public Dictionary<string, string> Properties { get; set; }
+        public Dictionary<string, string>? Properties { get; set; }
 
         /// <summary>
         /// Шаблон
         /// </summary>
-        public string HtmlTemplate { get; set; }
+        public string? HtmlTemplate { get; set; }
 
         /// <summary>
         /// Конвертация из Base64 в Html разметку

@@ -1,4 +1,3 @@
-
 using CMS;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,8 +25,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
-//todo Причесать, удалить ненужное,
-//todo Добавить параметры в JSON
-//todo Согласовать с требованиями
-//todo На ревью
