@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CMS.AppSettings\CMS.AppSettings.csproj" />
     <ProjectReference Include="..\CMS.Domain\CMS.Domain.csproj" />
+    <ProjectReference Include="..\CMS.ServicesManager\CMS.ServicesManager.csproj" />
   </ItemGroup>
 
 </Project>

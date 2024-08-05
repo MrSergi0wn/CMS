@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Diagnostics;
-using CMS.ItemsContainer;
-using CMS.Models;
 using CMS.Models.Models.CMSComponents;
+using CMS.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IComponentsContainer componentsContainer;
+        public readonly IHomeService homeService;
 
-
-        public HomeController(IComponentsContainer componentsContainer)
+        public HomeController(IHomeService homeService)
         {
-            this.componentsContainer = componentsContainer;
+            this.homeService = homeService;
         }
 
         public IActionResult Index()
@@ -22,49 +18,32 @@ namespace CMS.Controllers
             return View();
         }
 
-        //public IActionResult Create(IEnumerable<Template> templates)
-        //{
-
-        //}
-
         public JsonResult GetHeaders()
         {
-            return Json(this.componentsContainer.GetComponentsCollection<Header>()!);
+            return Json(this.homeService.GetHeaders());
         }
 
         public JsonResult GetBodies()
         {
-            return Json(this.componentsContainer.GetComponentsCollection<Body>()!);
+            return Json(this.homeService.GetBodies());
         }
 
         public JsonResult GetFooters()
         {
-            return Json(this.componentsContainer.GetComponentsCollection<Footer>()!);
+            return Json(this.homeService.GetFooter());
         }
 
         [HttpPost]
-        public IActionResult CreateView(CmsComponents cmsComponents)
+        public IActionResult CreateView(HomeViewModel homeViewModel)
         {
-            var qwe = new SelectedCmsComponent()
+            var resultViewModel = new ResultViewModel()
             {
-                SelectedHeader =
-                    this.componentsContainer.GetComponentsCollection<Header>()!.FirstOrDefault(header =>
-                        header.Id.Equals(cmsComponents.SelectedHeaderId)),
-                SelectedBody =
-                    this.componentsContainer.GetComponentsCollection<Body>()!.FirstOrDefault(body =>
-                        body.Id.Equals(cmsComponents.SelectedBodyId)),
-                SelectedFooter =
-                    this.componentsContainer.GetComponentsCollection<Footer>()!.FirstOrDefault(footer =>
-                        footer.Id.Equals(cmsComponents.SelectedFooterId))
+                HeaderOuterHtml = homeViewModel.SelectedHeader,
+                BodyOuterHtml = homeViewModel.SelectedBody,
+                FooterOuterHtml = homeViewModel.SelectedFooter
             };
 
-            return this.View("NewView",qwe);
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View("ResultView", resultViewModel);
         }
     }
 }
