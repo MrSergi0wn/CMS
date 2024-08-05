@@ -6,8 +6,8 @@ namespace CMS.Models.Models.CMSComponents
     {
         public BuilderViewModel(ComponentModel deserializedComponent)
         {
-            this.ComponentName = deserializedComponent.ComponentName;
-            this.ComponentTag = deserializedComponent.Properties["rep_tag"];
+            this.ComponentName = deserializedComponent.ComponentName!;
+            this.ComponentTag = deserializedComponent.Properties!["rep_tag"];
             this.ComponentColor = deserializedComponent.Properties["rep_color"];
             this.ComponentClass = deserializedComponent.Properties["rep_class"];
             this.OuterHtml = deserializedComponent.OuterHtml;
