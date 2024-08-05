@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using CMS.AppSettings;
+﻿using CMS.AppSettings;
 using CMS.Context;
 using CMS.Repository;
+using CMS.Services;
 using CMS.ServicesManager;
 
 namespace CMS
@@ -30,7 +30,13 @@ namespace CMS
 
             var domainContext = new DomainContext(serviceManager, appSettingsService);
 
-            services.AddScoped<IRepository>(_ => new Repository.Repository(domainContext));
+            var repository = new Repository.Repository(domainContext);
+
+            services.AddScoped<IRepository>(_ => repository);
+
+            var homeService = new HomeService(repository);
+
+            services.AddScoped<IHomeService>(_ => homeService);
 
             return services;
         }

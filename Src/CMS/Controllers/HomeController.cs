@@ -1,16 +1,16 @@
 using CMS.Models.Models.CMSComponents;
-using CMS.Repository;
+using CMS.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository repository;
+        public readonly IHomeService homeService;
 
-        public HomeController(IRepository repository)
+        public HomeController(IHomeService homeService)
         {
-            this.repository = repository;
+            this.homeService = homeService;
         }
 
         public IActionResult Index()
@@ -20,17 +20,17 @@ namespace CMS.Controllers
 
         public JsonResult GetHeaders()
         {
-            return Json(this.repository.GetHeaders().Select(component => new BuilderViewModel(component)).ToList());
+            return Json(this.homeService.GetHeaders());
         }
 
         public JsonResult GetBodies()
         {
-            return Json(this.repository.GetBodies().Select(component => new BuilderViewModel(component)).ToList());
+            return Json(this.homeService.GetBodies());
         }
 
         public JsonResult GetFooters()
         {
-            return Json(this.repository.GetFooters().Select(component => new BuilderViewModel(component)).ToList());
+            return Json(this.homeService.GetFooter());
         }
 
         [HttpPost]

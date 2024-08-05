@@ -17,17 +17,17 @@ namespace CMS.Repository
 
         public IEnumerable<ComponentModel> GetHeaders()
         {
-            return this.components.Where(c => c.Type.Equals("forHeader"));
+            return this.components.Where(c => c.Type!.Equals("forHeader"));
         }
 
         public IEnumerable<ComponentModel> GetBodies()
         {
-            return this.components.Where(c => c.Type.Equals("forBody"));
+            return this.components.Where(c => c.Type!.Equals("forBody"));
         }
 
         public IEnumerable<ComponentModel> GetFooters()
         {
-            return this.components.Where(c => c.Type.Equals("forFooter"));
+            return this.components.Where(c => c.Type!.Equals("forFooter"));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CMS.AppSettings;
 using CMS.Context;
 using CMS.Repository;
+using CMS.Services;
 using CMS.Services.DeserializeService;
 using CMS.Services.FileSystemService;
 using CMS.ServicesManager;
@@ -33,7 +34,13 @@ namespace CMS.UnitTests
 
             var domainContext = new DomainContext(serviceManager, appSettingsService);
 
-            serviceCollection.AddScoped<IRepository>(_ => new Repository.Repository(domainContext));
+            var repository = new Repository.Repository(domainContext);
+
+            serviceCollection.AddScoped<IRepository>(_ => repository);
+
+            var homeService = new HomeService(repository);
+
+            serviceCollection.AddScoped<IHomeService>(_ => homeService);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
