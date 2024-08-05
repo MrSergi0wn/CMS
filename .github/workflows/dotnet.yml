@@ -5,9 +5,9 @@ name: CMS
 
 on:
   push:
-    branches: [ "refactoring" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "refactoring" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
