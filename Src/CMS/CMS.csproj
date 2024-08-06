@@ -21,6 +21,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\Packages\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.FontIcons">
+      <HintPath>..\..\Packages\Telerik.FontIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.SvgIcons">
+      <HintPath>..\..\Packages\Telerik.SvgIcons.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="appsettingsForTests.Development.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
