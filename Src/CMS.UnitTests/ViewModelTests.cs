@@ -64,5 +64,6 @@ namespace CMS.UnitTests
             Assert.NotEmpty(this.resultViewModel.BodyOuterHtml!);
             Assert.NotEmpty(this.resultViewModel.FooterOuterHtml!);
         }
+
     }
 }

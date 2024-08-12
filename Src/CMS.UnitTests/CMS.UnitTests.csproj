@@ -24,4 +24,10 @@
     <ProjectReference Include="..\CMS\CMS.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestResults\coverage.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
