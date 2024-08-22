@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="coverlet.msbuild" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,12 +26,6 @@
     <ProjectReference Include="..\CMS.ServicesManager\CMS.ServicesManager.csproj" />
     <ProjectReference Include="..\CMS.Services\CMS.Services.csproj" />
     <ProjectReference Include="..\CMS\CMS.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TestResults\coverage.info">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

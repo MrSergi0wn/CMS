@@ -5,11 +5,11 @@ namespace CMS.Repository
 {
     public class Repository : IRepository
     {
-        private readonly DomainContext domainContext;
+        private readonly IDomainContext domainContext;
 
         private readonly IEnumerable<ComponentModel> components;
 
-        public Repository(DomainContext domainContext)
+        public Repository(IDomainContext domainContext)
         {
             this.domainContext = domainContext;
             this.components = this.domainContext.GetComponents();

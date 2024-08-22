@@ -1,11 +1,11 @@
 ﻿using CMS.AppSettings;
 using CMS.Domain;
-using CMS.Models.Models.CMSComponents;
 using CMS.ServicesManager;
 
 namespace CMS.Context
 {
-    public class DomainContext
+
+    public class DomainContext : IDomainContext
     {
         private readonly IServicesManager servicesManager;
 

@@ -9,9 +9,9 @@
     <div class="text-center">
         
         <h1 style="margin-bottom:50px">Конструктор</h1>
-        
+
         <div class="row d-flex justify-content-center" style="margin-bottom:150px;">
-            <div class="col-md-5">
+            <div class="col-md-8">
                 @(Html.Kendo().MultiColumnComboBoxFor(h => h.SelectedHeader)
                     .Label(label => label.Content("Headers"))
                     .DataTextField("ComponentName")
@@ -20,8 +20,9 @@
                     {
                         columns.Add().Field("ComponentName").Title("Название");
                         columns.Add().Field("ComponentTag").Title("Тег");
-                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentColor").Title("Цвет").Template("<div style=\"width: 100px; height: 10px; background: #: data.ComponentColor #;\"></div>");
                         columns.Add().Field("ComponentClass").Title("Класс");
+                        columns.Add().Field("ComponentContent").Title("Контент");
                     })
                     .Placeholder("Выберите \"Header\"")
                     .DataSource(source =>
@@ -30,12 +31,12 @@
                         {
                             read.Action("GetHeaders", "Home");
                         })
-                        .ServerFiltering(false);
+                            .ServerFiltering(false);
                     }))
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-md-5" style="margin-bottom: 150px;">
+            <div class="col-md-8" style="margin-bottom: 150px;">
                 @(Html.Kendo().MultiColumnComboBoxFor(b => b.SelectedBody)
                     .Label(label => label.Content("Bodies"))
                     .DataTextField("ComponentName")
@@ -44,8 +45,9 @@
                     {
                         columns.Add().Field("ComponentName").Title("Название");
                         columns.Add().Field("ComponentTag").Title("Тег");
-                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentColor").Title("Цвет").Template("<div style=\"width: 100px; height: 10px; background: #: data.ComponentColor #;\"></div>");
                         columns.Add().Field("ComponentClass").Title("Класс");
+                        columns.Add().Field("ComponentContent").Title("Контент");
                     })
                     .Placeholder("Выберите \"Body\"")
                     .DataSource(source =>
@@ -54,14 +56,14 @@
                         {
                             read.Action("GetBodies", "Home");
                         })
-                        .ServerFiltering(false);
+                            .ServerFiltering(false);
                     })
                     )
             </div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-md-5" style="margin-bottom: 150px;">
+            <div class="col-md-8" style="margin-bottom: 150px;">
                 @(Html.Kendo().MultiColumnComboBoxFor(f => f.SelectedFooter)
                     .Label(label => label.Content("Footers"))
                     .DataTextField("ComponentName")
@@ -70,8 +72,9 @@
                     {
                         columns.Add().Field("ComponentName").Title("Название");
                         columns.Add().Field("ComponentTag").Title("Тег");
-                        columns.Add().Field("ComponentColor").Title("Цвет");
+                        columns.Add().Field("ComponentColor").Title("Цвет").Template("<div style=\"width: 100px; height: 10px; background: #: data.ComponentColor #;\"></div>");
                         columns.Add().Field("ComponentClass").Title("Класс");
+                        columns.Add().Field("ComponentContent").Title("Контент");
                     })
                     .Placeholder("Выберите \"Footer\"")
                     .DataSource(source =>
@@ -80,12 +83,12 @@
                         {
                             read.Action("GetFooters", "Home");
                         })
-                        .ServerFiltering(false);
+                            .ServerFiltering(false);
                     })
                     )
             </div>
         </div>
-        
+
         <button type="submit" class="btn btn-outline-success">Создать</button>
     </div>
 </form>

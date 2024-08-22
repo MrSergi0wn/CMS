@@ -15,7 +15,7 @@ namespace CMS.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
         }
 
         public JsonResult GetHeaders()
@@ -32,6 +32,7 @@ namespace CMS.Controllers
         {
             return Json(this.homeService.GetFooter());
         }
+
 
         [HttpPost]
         public IActionResult CreateView(HomeViewModel homeViewModel)
