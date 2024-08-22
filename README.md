@@ -24,7 +24,7 @@ CMS
 
 
 
-![image-20240817143832794](C:\Users\Сергей\AppData\Roaming\Typora\typora-user-images\image-20240817143832794.png)
+![Architecture](/Demo/Architecture.png)
 
 
 
@@ -40,5 +40,5 @@ CMS
 
 (Без интеграционных тестов, проверена логика работы UI Controlles)
 
-![image-20240817131856731](C:\Users\Сергей\AppData\Roaming\Typora\typora-user-images\image-20240817131856731.png)
+![Architecture](/Demo/TestsCoverage.png)
 
