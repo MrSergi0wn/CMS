@@ -28,15 +28,17 @@ namespace CMS
 
             services.AddScoped<IServicesManager>(_ => serviceManager);
 
-            var domainContext = new DomainContext(serviceManager, appSettingsService);
+            //var domainContext = new DomainContext(serviceManager, appSettingsService);
 
-            var repository = new Repository.Repository(domainContext);
+            //var repository = new Repository.Repository(domainContext);
 
-            services.AddScoped<IRepository>(_ => repository);
+            services.AddScoped<IDomainContext, DomainContext>();
 
-            var homeService = new HomeService(repository);
+            services.AddScoped<IRepository, Repository.Repository>(); //_ => repository
 
-            services.AddScoped<IHomeService>(_ => homeService);
+            //var homeService = new HomeService(repository);
+
+            services.AddScoped<IHomeService, HomeService>(); //_ => homeService
 
             return services;
         }
