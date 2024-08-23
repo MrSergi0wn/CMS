@@ -28,33 +28,13 @@ namespace CMS
 
             services.AddScoped<IServicesManager>(_ => serviceManager);
 
-            //var domainContext = new DomainContext(serviceManager, appSettingsService);
-
-            //var repository = new Repository.Repository(domainContext);
-
             services.AddScoped<IDomainContext, DomainContext>();
 
-            services.AddScoped<IRepository, Repository.Repository>(); //_ => repository
+            services.AddScoped<IRepository, Repository.Repository>();
 
-            //var homeService = new HomeService(repository);
-
-            services.AddScoped<IHomeService, HomeService>(); //_ => homeService
+            services.AddScoped<IHomeService, HomeService>();
 
             return services;
         }
-
-        //private static void CreateMapper(this IServiceCollection services)
-        //{
-        //    var mapperConfiguration = new MapperConfiguration(mapperConfigurationExpression =>
-        //    {
-        //        mapperConfigurationExpression.AddProfile(new MapperProfile());
-        //    });
-
-        //    services.AddScoped(provider => provider.GetService<MapperConfiguration>()!.CreateMapper());
-
-        //    services.AddSingleton<IMapper>(new AutoMapper.Mapper(mapperConfiguration));
-
-        //    mapperConfiguration.CreateMapper();
-        //}
     }
 }
